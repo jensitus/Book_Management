@@ -319,10 +319,9 @@ public class BookGUI extends JFrame {
 		// Hinzufügen des WestPanel zum Fenster
 		this.getContentPane().add(westPanel, BorderLayout.WEST);
 		this.setVisible(true);
-		
-		
-
+	
 	}
+	
 
 	/**
 	 * Der Inhalt aller Tabellenfelder im EastPanel wird zurückgesetzt
