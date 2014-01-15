@@ -15,6 +15,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import databasePackage.BookDB;
+
 /**
  * Die Klasse BookGUI ist für den Aufbau der grafischen Oberfläche
  * zuständig.
@@ -83,9 +85,10 @@ public class BookGUI extends JFrame {
 	private JButton saveButton;
 
 	private JTable bookTable;
+	private JScrollPane scrollPane;
 
 	/**
-	 * Konstruktur (Fensterbeschriftung und Initialisierung der Komponenten
+	 * Konstruktur (Fensterbeschriftung und Initialisierung der Komponenten)
 	 * 
 	 * @param title
 	 */
@@ -154,7 +157,7 @@ public class BookGUI extends JFrame {
 	private void initComponentsEast() {
 
 		eastPanel = new JPanel();
-		// Layout für 9 Zeilen und 2 Spalten
+		// Layout für 10 Zeilen und 2 Spalten
 		eastPanel.setLayout(new GridLayout(10, 2));
 
 		isbnLabel = new JLabel("ISBN-Nummer: ");
@@ -228,12 +231,14 @@ public class BookGUI extends JFrame {
 		saveButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		saveButton.setBackground(Color.lightGray);
 		saveButton.setBorder(BorderFactory.createRaisedBevelBorder());
-		// wenn auf den Button "speichern" geklickt wird, soll der Datensatz
-		// in die Datenbank gespeichert werden
+
+		// wenn auf den Button "speichern" geklickt wird, soll die Neuerfassung
+		// eines Buches ausgelöst werden
 		saveButton.addActionListener(new BookActionListener(this));
+
 		// Der Button "speichern" ist zu Beginn/beim Erscheinen des Fensters
 		// noch ncht auswählbar; sie wird erst sichtbar, wenn ein Datensatz
-		// ausgewählt wurde
+		// ausgewählt oder der Button "neu" geklickt wurde
 		saveButton.setEnabled(false);
 
 		// Dummy-Label für Abstand zwischen der Tabelle und den Buttons
@@ -265,6 +270,7 @@ public class BookGUI extends JFrame {
 		eastPanel.add(readLabel);
 		eastPanel.add(readCombo);
 
+		// Dummy-Label für Abstand zwischen der Tabelle und den Buttons
 		eastPanel.add(dummyLabel);
 		eastPanel.add(dummyLabel2);
 
@@ -291,35 +297,42 @@ public class BookGUI extends JFrame {
 	}
 
 	/**
-	 * Initialisierung der Büchertabelle
+	 * Aufbau der Büchertabelle (wird im WestPanel ausgegeben)
 	 */
-	public void createBookTable() {
-		
+	public JTable createBookTable() {
+
 		// Bei der erstmaligen Initialisierung des Fensters gibt es noch keine
-		// Darstellungsprobleme mit der Tabelle. Es werden alle Datensätze angezeigt	
-		if (getSearchText().getText().matches("Bitte Suchbegriff eingeben")) {			
+		// Darstellungsprobleme mit der Tabelle. Es werden alle Datensätze
+		// angezeigt
+		if (getSearchText().getText().matches("Bitte Suchbegriff eingeben")) {
 			// alle Datensätze werden angezeigt
-			bookTable = new BookTable().showAllData();
-			
+			bookTable = new JTable(new BookTable(BookDB.displayAll()));
+
 		} else {
-			// Damit bei Eingabe eines Suchbegriffes die Tabelle neu aufgebaut wird,
-			// wird sie zunächst einmal aus dem WestPanel entfernt, danach wird nach
-			// dem entsprechenden Suchbegriff gesucht (im Datenbankfeld title) und am
-			// Ende werden die Suchergebnisse wieder in einer neuen Tabelle angezeigt
+			// Damit bei Eingabe eines Suchbegriffes die Tabelle neu aufgebaut
+			// wird, wird sie zunächst einmal aus dem WestPanel entfernt, danach
+			// wird nach dem entsprechenden Suchbegriff gesucht (im
+			// Datenbankfeld title) und am Ende werden die Suchergebnisse wieder
+			// in einer neuen Tabelle angezeigt
 			
-			this.getContentPane().remove(westPanel);		
-			bookTable = new BookTable().selectetData();
+			this.getContentPane().remove(westPanel);
+			bookTable = new JTable(new BookTable(BookDB.displayAll()));
+
 		}
-		
+
 		westPanel = new JPanel();
-		
-		// Mittels JScrollPane werden die Spaltenüberschriften angezeigt
-		westPanel.add(new JScrollPane(bookTable));
+
+		// Falls die Spalten zu breit für den verfügbaren Platz sind
+		// soll eine Scrollbar zur Verfügung stehen
+		scrollPane = new JScrollPane(bookTable);
+		westPanel.add(scrollPane);
 
 		// Hinzufügen des WestPanel zum Fenster
 		this.getContentPane().add(westPanel, BorderLayout.WEST);
 		this.setVisible(true);
-	
+		
+		return bookTable;
+
 	}
 	
 
@@ -453,7 +466,5 @@ public class BookGUI extends JFrame {
 	public void setBookTable(JTable bookTable) {
 		this.bookTable = bookTable;
 	}
-	
-	
 
 }

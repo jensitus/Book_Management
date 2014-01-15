@@ -10,6 +10,7 @@ package databasePackage;
 
 public class Book {
 
+	private String id;
 	private String isbn;
 	private String title;
 	private String author;
@@ -22,6 +23,7 @@ public class Book {
 	/**
 	 * Konstruktor für den Zugriff auf alle Tabellenfelder
 	 * 
+	 * @param id
 	 * @param isbn
 	 * @param title
 	 * @param author
@@ -31,10 +33,11 @@ public class Book {
 	 * @param comment
 	 * @param read
 	 */
-	public Book(String isbn, String title, String author,
+	public Book(String id, String isbn, String title, String author,
 			String publicationDate, String format, String shortDescription,
 			String comment, String read) {
 
+		this.id = id;
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
@@ -49,6 +52,14 @@ public class Book {
 	/**
 	 * Definition der Getter und Setter
 	 */
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getIsbn() {
 		return isbn;
 	}

@@ -1,57 +1,111 @@
 package viewPackage;
 
-import javax.swing.JTable;
+import java.util.List;
+
 import javax.swing.table.AbstractTableModel;
 
-
+import databasePackage.Book;
 
 /**
- * Die Klasse BookTable ist für den Aufbau und den Inhalt der
- * Büchertabelle zuständig
+ * Die Klasse BookTable ist für den Aufbau und den Inhalt der Büchertabelle
+ * zuständig
  * 
- * @author Bergsocke
- *
+ * Implementierung der abstrakten Klasse AbstractTableModel
+ * 
+ * @author Eva Weinberger
+ * 
  */
 public class BookTable extends AbstractTableModel {
 
+	public List bookList;
 	
-	public JTable showAllData() {
-		
-		String [][] rowData = {{"Japan", "245"}, {"USA", "240"}, {"Italien", "270"}, {"Griechenland", "185"}};
-		String [] columNames = {"Land", "Fernsehdauer pro Tag"};
-		
-		JTable bookTable = new JTable(rowData, columNames);
-		
-		return bookTable;
 
-	}
-	
-	public JTable selectetData() {
-		
-		String [][] rowData = {{"Österreich", "345"}, {"Deutschland", "245"}};
-		String [] columNames = {"Land", "Fernsehdauer pro Tag"};
-		
-		JTable bookTable = new JTable(rowData, columNames);
-		
-		return bookTable;
+	/**
+	 * Konstruktor
+	 * 
+	 * @param books
+	 */
+
+	public BookTable(List books) {
+		bookList = books;
 	}
 
-	@Override
+
+	/**
+	 * Rückgabe der Spaltenanzahl der Büchertabelle
+	 */
 	public int getColumnCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 9;
 	}
 
-	@Override
+
+	/**
+	 * Rückgabe der Anzahl der Datensätze, die sich in der Datenbank befinden
+	 */
 	public int getRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return bookList.size();
 	}
 
-	@Override
-	public Object getValueAt(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * Festlegung der Spaltenbeschriftungen
+	 */
+	public String getColumnName(int arg0) {
+
+		switch (arg0) {
+		case 0:
+			return "ID-Nr";
+		case 1:
+			return "ISBN";
+		case 2:
+			return "Buch-Titel";
+		case 3:
+			return "Autor";
+		case 4:
+			return "Ausgabe-Jahr";
+		case 5:
+			return "Buch-Format";
+		case 6:
+			return "Kurzbeschreibung";
+		case 7:
+			return "Kommentar";
+		case 8:
+			return "gelesen";
+
+		default:
+			return null;
+		}
 	}
-	
+
+
+	/**
+	 * Rückgabe des Inhalts der jeweiligen Tabellenzeile
+	 */
+	public Object getValueAt(int row, int column) {
+		Book b = (Book) bookList.get(row);
+		switch (column) {
+		case 0:
+			return b.getId();
+		case 1:
+			return b.getIsbn();
+		case 2:
+			return b.getTitle();
+		case 3:
+			return b.getAuthor();
+		case 4:
+			return b.getPublicationDate();
+		case 5:
+			return b.getFormat();
+		case 6:
+			return b.getShortDescription();
+		case 7:
+			return b.getComment();
+		case 8:
+			return b.getRead();
+			
+		default:
+			return null;
+
+		}
+	}
+
 }

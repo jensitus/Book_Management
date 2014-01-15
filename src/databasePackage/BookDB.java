@@ -4,12 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Verbindungsaufbau zur Datenbank (book_database.books) 
- * Speichern des Datensatz in die Datenbank 
- * Anzeige aller Datensätze 
- * Suchfunktionen ausführen
+ * Die Klasse BookDB stellte eine Verbindung zur Datenbank her. Sie bietet die
+ * Methoden zum Anzeigen, Suchen und Speichern von Datensätzen
  * 
  * @author Eva Weinberger
  * 
@@ -17,16 +17,17 @@ import java.sql.ResultSet;
 
 public class BookDB {
 
-	private Connection connect = null;
-	private PreparedStatement myPreparedStatement = null;
-	private ResultSet myResultSet = null;
-	public int successful = 0; // Variable, die anzeigt, ob Datensatz-Speichern
-								// erfolgreich war
+	private static Connection connect = null;
+	private static PreparedStatement myPreparedStatement = null;
+	private static ResultSet myResultSet = null;
+	// Variable, die anzeigt, ob Datensatz-Speichern erfolgreich war
+	public static int successful = 0;
 
+	
 	/**
-	 * Die Datenbank-Verbindung wird hergestellt
+	 * Diese Methode baut die Datenbankverbindung zur MYSQL-Datenbank auf
 	 */
-	public void connectDB() {
+	public static void connectDB() {
 
 		try {
 			// Treiber wird geladen und die Regestrierung beim DriverManager
@@ -44,6 +45,39 @@ public class BookDB {
 		}
 
 	}
+	
+	/**
+	 * Anzeigen aller Datensätze, die in der Datenbank vorhanden sind
+	 */
+	public static List displayAll() {
+
+		List results = new ArrayList();
+
+		try {
+			connectDB();
+			myPreparedStatement = connect
+					.prepareStatement("SELECT * FROM book_database.books;");
+			myResultSet = myPreparedStatement.executeQuery();
+
+			while (myResultSet.next()) {
+				results.add(new Book(myResultSet.getString(1), myResultSet
+						.getString(2), myResultSet.getString(3), myResultSet
+						.getString(4), myResultSet.getString(5), myResultSet
+						.getString(6), myResultSet.getString(7), myResultSet
+						.getString(8), myResultSet.getString(9)));
+
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+
+		} finally {
+			close();
+		}
+
+		return results;
+
+	}
 
 	/**
 	 * Speichern des Datensatz in die Datenbank
@@ -58,13 +92,13 @@ public class BookDB {
 	 * @param read
 	 * @return
 	 */
-	public int saveBook(String isbn, String title, String author,
+	public static int saveBook(String isbn, String title, String author,
 			String publicatonDate, String format, String shortDescription,
 			String comment, String read) {
 
 		try {
 			// Datenbankverbindung herstellen
-			this.connectDB();
+			connectDB();
 
 			// PreparedStatement für SQL-Befehl
 			myPreparedStatement = connect
@@ -111,64 +145,12 @@ public class BookDB {
 
 	}
 
-	/**
-	 * Anzeigen aller Datensätze, die in der Datenbank vorhanden sind
-	 */
-	public void displayAll() {
-		try {
-			this.connectDB();
-			myPreparedStatement = connect
-					.prepareStatement("SELECT * FROM book_database.books;");
-			myResultSet = myPreparedStatement.executeQuery();
 
-			while (myResultSet.next()) {
-				String tempIsbn = myResultSet.getString("isbn");
-				String tempTitle = myResultSet.getString("title");
-				System.out.println(tempIsbn + " " + tempTitle);
-
-			}
-
-			// Tabellenname und Spaltennamen anzeigen
-			writeMetaData(myResultSet);
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-
-		} finally {
-			close();
-		}
-	}
-
-	/**
-	 * Tabellenname und Spaltenüberschriften anzeigen
-	 * 
-	 * @param resultSet
-	 */
-	private void writeMetaData(ResultSet resultSet) {
-
-		try {
-			// Tabellenname
-			System.out.println("Tabellenname: "
-					+ resultSet.getMetaData().getTableName(1));
-
-			// Spaltenüberschriften
-			System.out.println("Die Spalten in der Tabelle sind: ");
-
-			for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
-				System.out.println("Spalte " + i + ": "
-						+ resultSet.getMetaData().getColumnName(i));
-			}
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-
-	}
 
 	/**
 	 * Alle offenen Verbindungen werden wieder geschlossen
 	 */
-	private void close() {
+	private static void close() {
 		try {
 
 			if (myResultSet != null) {
