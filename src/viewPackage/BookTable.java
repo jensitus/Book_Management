@@ -14,6 +14,8 @@ import databasePackage.Book;
  * 
  * @author Eva Weinberger
  * 
+ * Letztes Änderungsdatum: 15.01.2014
+ * 
  */
 public class BookTable extends AbstractTableModel {
 

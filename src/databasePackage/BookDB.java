@@ -13,6 +13,8 @@ import java.util.List;
  * 
  * @author Eva Weinberger
  * 
+ * Letztes Änderungsdatum: 15.01.2014
+ * 
  */
 
 public class BookDB {

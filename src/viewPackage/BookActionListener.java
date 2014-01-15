@@ -17,6 +17,8 @@ import databasePackage.BookDB;
  * 
  * @author Eva Weinberger
  * 
+ * Letztes Änderungsdatum: 15.01.2014
+ * 
  */
 public class BookActionListener implements ActionListener {
 

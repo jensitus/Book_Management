@@ -26,6 +26,8 @@ import databasePackage.BookDB;
  * 
  * @author Eva Weinberger
  * 
+ * Letztes Änderungsdatum: 15.01.2014
+ * 
  */
 
 /**
