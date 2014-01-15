@@ -316,7 +316,7 @@ public class BookGUI extends JFrame {
 		// Mittels JScrollPane werden die Spaltenüberschriften angezeigt
 		westPanel.add(new JScrollPane(bookTable));
 
-		// Hinzufügen des WestPanel zum Fenster
+		// Hinzufügen des WestPanel zum Fenster und auf sichtbar setzen
 		this.getContentPane().add(westPanel, BorderLayout.WEST);
 		this.setVisible(true);
 		
