@@ -318,6 +318,9 @@ public class BookGUI extends JFrame {
 
 		// Hinzufügen des WestPanel zum Fenster
 		this.getContentPane().add(westPanel, BorderLayout.WEST);
+		this.setVisible(true);
+		
+		
 
 	}
 
