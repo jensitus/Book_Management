@@ -36,7 +36,8 @@ Eclipse Treiber Info einbinden ->
     mysql-connector-java-xxx-bin.jar in diesen Ordner kopieren
 
 Verweis erstellen ->
-    Project - Properties - Java Build Path - Add JARs - mysql-connector-java-xxx-bin.jar ausw�hlen
+
+    Project - Properties - Java Build Path - Add JARs - mysql-connector-java-xxx-bin.jar ausw&auml;hlen
  
 Wenn erfolgreich, ist mysql-connector-java-xxx-bin.jar dann im Ordner "Referenced Libraries" sichbar
 
