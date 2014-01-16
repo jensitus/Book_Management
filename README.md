@@ -25,7 +25,7 @@ Tabelle "books" erstellen ->
 
     mysql> CREATE TABLE books (id INT NOT NULL AUTO_INCREMENT, isbn VARCHAR(20), title VARCHAR(30), author VARCHAR(50), publicationDate VARCHAR(20), formatb VARCHAR(20), shortDescription VARCHAR(100), commentb VARCHAR(100), readb VARCHAR(10), PRIMARY KEY(id));
 
-Einen Test-Datensatz anlegen ->
+Einen Test-Datensatz anlegen  
 
     mysql>INSERT INTO books VALUES (default, '978-3-8362-1802-3', 'Java ist auch eine Insel' , 'Ullenboom, Christian', 2012, 'Gebunden', 'Java-Lehrbuch', 'gut zu lesen', 'ja');
 
