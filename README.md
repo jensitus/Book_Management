@@ -98,7 +98,7 @@ Neue Branch "developer_branch" erstellen ->
     git checkout developer_branch;
     git push origin developer_branch;
 
-Auf der Website die �nderungen mit dem Master mergen  
+Auf der Website die &Auml;nderungen mit dem Master mergen  
 
 &Auml;nderungen vom WebsiteMaster in den Master pullen ->  
 
