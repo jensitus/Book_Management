@@ -1,7 +1,7 @@
 Book_Management
 ===============
 
-Java-Programm zum Verwalten von B&uuml;hern
+Java-Programm zum Verwalten von B&uuml;chern
 
 
 ------------------------------------------------------------------
@@ -48,14 +48,14 @@ Auf der github-Website Repository erstellen
 URL kopieren: https://github.com/Bergsocke/Book_Management.git
 
 
-Git-Bash �ffnen 
+Git-Bash &ouml;ffnen 
 zum Projektverzeichnis wechseln ->
 
-    >cd documents/java/wifi_projekt
+    cd documents/java/wifi_projekt
 
 Ordner initialisieren -> 
 
-    >git init;
+    git init;
 
 .gitignor erstellen bzw. reinkopieren (im Windows-Explorer)
 JavaProjektVerzeichnisse reinkopieren
@@ -66,45 +66,45 @@ in Git-Bash zum Java-Projekt wechseln ->
 
 Status abfragen ->  
 
-    >git status;
+    git status;
 
 Branches abfragen ->  
 
-    >git branch;
+    git branch;
 
 Website Repository clonen ->  
 
-    >git clone https://github.com/Bergsocke/Book_Management.git
+    git clone https://github.com/Bergsocke/Book_Management.git
 
 Neue Branch "developer_branch" erstellen ->
 
     >git checkout -b developer_branch;
 
-�nderungen kommentieren ->  
+&Auml;nderungen kommentieren ->  
 
-    >git status;
-    >git add .;  (alle Dokumente im Ordner)
-    >git add <Dateiname>;
-    >git commit -m 'Hier wird Kommentartext eingetragen';
+    git status;
+    git add .;  (alle Dokumente im Ordner)
+    git add <Dateiname>;
+    git commit -m 'Hier wird Kommentartext eingetragen';
 
-�nderungen im developer_branch mit master mergen ->   
+&Auml;nderungen im developer_branch mit master mergen ->   
 
-    >git checkout master;
-    >git merge developer_branch;
+    git checkout master;
+    git merge developer_branch;
 
-�nderungen zum Git Repository Website Developer_Branch pushen ->  
+&Auml;nderungen zum Git Repository Website Developer_Branch pushen ->  
 
-    >git checkout developer_branch;
-    >git push origin developer_branch;
+    git checkout developer_branch;
+    git push origin developer_branch;
 
 Auf der Website die �nderungen mit dem Master mergen  
 
-�nderungen vom WebsiteMaster in den Master pullen ->  
+&Auml;nderungen vom WebsiteMaster in den Master pullen ->  
 
-    >git pull origin master;
+    git pull origin master;
 
-�nderungen dann mit der Developer_branch mergen ->  
+&Auml;nderungen dann mit der Developer_branch mergen ->  
 
-    >git checkout developer_branch;
-    >git merge master;
+    git checkout developer_branch;
+    git merge master;
 
