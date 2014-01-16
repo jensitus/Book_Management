@@ -1,7 +1,7 @@
 Book_Management
 ===============
 
-Java-Programm zum Verwalten von Büchern
+Java-Programm zum Verwalten von Bï¿½chern
 
 
 ------------------------------------------------------------------
@@ -10,8 +10,8 @@ SQL DATENBANK ERSTELLEN
 
 Datenbank "book_database" und User "book_user" mit dem Passwort "book_password" erstellen ->
 
- mysql> CREATE DATABASE book_database;
- mysql> GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES, CREATE TEMPORARY TABLES ON `book_database`.* TO 'book_user'@'localhost' IDENTIFIED BY 'book_password';
+    mysql> CREATE DATABASE book_database;  
+    mysql> GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES, CREATE TEMPORARY TABLES ON `book_database`.* TO 'book_user'@'localhost' IDENTIFIED BY 'book_password';  
 
 Mit dem book_user einloggen ->
 
@@ -36,7 +36,7 @@ Eclipse Treiber Info einbinden ->
  mysql-connector-java-xxx-bin.jar in diesen Ordner kopieren
 
 Verweis erstellen ->
- Project - Properties - Java Build Path - Add JARs - mysql-connector-java-xxx-bin.jar auswählen
+ Project - Properties - Java Build Path - Add JARs - mysql-connector-java-xxx-bin.jar auswï¿½hlen
  
 Wenn erfolgreich, ist mysql-connector-java-xxx-bin.jar dann im Ordner "Referenced Libraries" sichbar
 
@@ -48,7 +48,7 @@ Auf der github-Website Repository erstellen
 URL kopieren: https://github.com/Bergsocke/Book_Management.git
 
 
-Git-Bash öffnen 
+Git-Bash ï¿½ffnen 
 zum Projektverzeichnis wechseln ->
 
  >cd documents/java/wifi_projekt
@@ -74,26 +74,26 @@ Website Repository clonen ->
 Neue Branch "developer_branch" erstellen ->
  >git checkout -b developer_branch;
 
-Änderungen kommentieren ->
+ï¿½nderungen kommentieren ->
  >git status;
  >git add .;  (alle Dokumente im Ordner)
  >git add <Dateiname>;
  >git commit -m 'Hier wird Kommentartext eingetragen';
 
-Änderungen im developer_branch mit master mergen ->
+ï¿½nderungen im developer_branch mit master mergen ->
  >git checkout master;
  >git merge developer_branch;
 
-Änderungen zum Git Repository Website Developer_Branch pushen ->
+ï¿½nderungen zum Git Repository Website Developer_Branch pushen ->
  >git checkout developer_branch;
  >git push origin developer_branch;
 
-Auf der Website die Änderungen mit dem Master mergen
+Auf der Website die ï¿½nderungen mit dem Master mergen
 
-Änderungen vom WebsiteMaster in den Master pullen ->
+ï¿½nderungen vom WebsiteMaster in den Master pullen ->
  >git pull origin master;
 
-Änderungen dann mit der Developer_branch mergen ->
+ï¿½nderungen dann mit der Developer_branch mergen ->
  >git checkout developer_branch;
  >git merge master;
 
