@@ -1,7 +1,7 @@
 Book_Management
 ===============
 
-Java-Programm zum Verwalten von B�chern
+Java-Programm zum Verwalten von B&uuml;hern
 
 
 ------------------------------------------------------------------
