@@ -53,47 +53,58 @@ zum Projektverzeichnis wechseln ->
 
     >cd documents/java/wifi_projekt
 
-Ordner initialisieren ->  
+Ordner initialisieren -> 
+
     >git init;
 
 .gitignor erstellen bzw. reinkopieren (im Windows-Explorer)
 JavaProjektVerzeichnisse reinkopieren
 
-in Git-Bash zum Java-Projekt wechseln ->  
+in Git-Bash zum Java-Projekt wechseln -> 
+
     cd Book_Management
 
 Status abfragen ->  
+
     >git status;
 
 Branches abfragen ->  
+
     >git branch;
 
 Website Repository clonen ->  
+
     >git clone https://github.com/Bergsocke/Book_Management.git
 
-Neue Branch "developer_branch" erstellen ->  
+Neue Branch "developer_branch" erstellen ->
+
     >git checkout -b developer_branch;
 
 �nderungen kommentieren ->  
+
     >git status;
     >git add .;  (alle Dokumente im Ordner)
     >git add <Dateiname>;
     >git commit -m 'Hier wird Kommentartext eingetragen';
 
 �nderungen im developer_branch mit master mergen ->   
+
     >git checkout master;
     >git merge developer_branch;
 
 �nderungen zum Git Repository Website Developer_Branch pushen ->  
+
     >git checkout developer_branch;
     >git push origin developer_branch;
 
 Auf der Website die �nderungen mit dem Master mergen  
 
 �nderungen vom WebsiteMaster in den Master pullen ->  
+
     >git pull origin master;
 
 �nderungen dann mit der Developer_branch mergen ->  
+
     >git checkout developer_branch;
     >git merge master;
 
