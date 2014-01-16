@@ -17,7 +17,7 @@ import databasePackage.BookDB;
  * 
  * @author Eva Weinberger
  * 
- * Letztes Änderungsdatum: 15.01.2014
+ * Letztes Änderungsdatum: 16.01.2014
  * 
  */
 public class BookActionListener implements ActionListener {
@@ -146,6 +146,10 @@ public class BookActionListener implements ActionListener {
 				// Alle Textfelder werden zurückgesetzt, damit weitere
 				// Datensätze eingegeben werden können
 				gui.resetTableEast();
+				
+				// Die Tabelle im WestPanel wird neu aufgebaut, damit der
+				// neu angelegte Datensatz gleich ausgegeben wird
+				gui.reloadWestTable();
 							
 				// Wenn der Datensatz nicht gespeichert wurde, wird eine
 				// entsprechende Meldung ausgegeben

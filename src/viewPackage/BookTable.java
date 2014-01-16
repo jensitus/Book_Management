@@ -19,6 +19,8 @@ import databasePackage.Book;
  */
 public class BookTable extends AbstractTableModel {
 
+	private static final long serialVersionUID = 7055287075166243444L;
+	
 	public List bookList;
 	
 
