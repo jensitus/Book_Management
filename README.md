@@ -13,30 +13,30 @@ Datenbank "book_database" und User "book_user" mit dem Passwort "book_password" 
     mysql> CREATE DATABASE book_database;  
     mysql> GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES, CREATE TEMPORARY TABLES ON `book_database`.* TO 'book_user'@'localhost' IDENTIFIED BY 'book_password';  
 
-Mit dem book_user einloggen ->
+Mit dem book_user einloggen ->  
 
- mysql> --user  book_user --database book_database --password book_password;
+    mysql> --user  book_user --database book_database --password book_password;  
 
-In die Datenbank "book_database" wechseln ->
+In die Datenbank "book_database" wechseln ->  
 
- mysql> use book_database;
+    mysql> use book_database;
  
 Tabelle "books" erstellen ->
 
- mysql> CREATE TABLE books (id INT NOT NULL AUTO_INCREMENT, isbn VARCHAR(20), title VARCHAR(30), author VARCHAR(50), publicationDate VARCHAR(20), formatb VARCHAR(20), shortDescription VARCHAR(100), commentb VARCHAR(100), readb VARCHAR(10), PRIMARY KEY(id));
+    mysql> CREATE TABLE books (id INT NOT NULL AUTO_INCREMENT, isbn VARCHAR(20), title VARCHAR(30), author VARCHAR(50), publicationDate VARCHAR(20), formatb VARCHAR(20), shortDescription VARCHAR(100), commentb VARCHAR(100), readb VARCHAR(10), PRIMARY KEY(id));
 
 Einen Test-Datensatz anlegen ->
 
- mysql>INSERT INTO books VALUES (default, '978-3-8362-1802-3', 'Java ist auch eine Insel' , 'Ullenboom, Christian', 2012, 'Gebunden', 'Java-Lehrbuch', 'gut zu lesen', 'ja');
+    mysql>INSERT INTO books VALUES (default, '978-3-8362-1802-3', 'Java ist auch eine Insel' , 'Ullenboom, Christian', 2012, 'Gebunden', 'Java-Lehrbuch', 'gut zu lesen', 'ja');
 
 
 Eclipse Treiber Info einbinden ->
 
- neuen Folder im Projekt erstellen (z.B. TreiberLib)
- mysql-connector-java-xxx-bin.jar in diesen Ordner kopieren
+    neuen Folder im Projekt erstellen (z.B. TreiberLib)
+    mysql-connector-java-xxx-bin.jar in diesen Ordner kopieren
 
 Verweis erstellen ->
- Project - Properties - Java Build Path - Add JARs - mysql-connector-java-xxx-bin.jar ausw�hlen
+    Project - Properties - Java Build Path - Add JARs - mysql-connector-java-xxx-bin.jar ausw�hlen
  
 Wenn erfolgreich, ist mysql-connector-java-xxx-bin.jar dann im Ordner "Referenced Libraries" sichbar
 
@@ -51,49 +51,49 @@ URL kopieren: https://github.com/Bergsocke/Book_Management.git
 Git-Bash �ffnen 
 zum Projektverzeichnis wechseln ->
 
- >cd documents/java/wifi_projekt
+    >cd documents/java/wifi_projekt
 
-Ordner initialisieren ->
- >git init;
+Ordner initialisieren ->  
+    >git init;
 
 .gitignor erstellen bzw. reinkopieren (im Windows-Explorer)
 JavaProjektVerzeichnisse reinkopieren
 
-in Git-Bash zum Java-Projekt wechseln ->
- >cd Book_Management
+in Git-Bash zum Java-Projekt wechseln ->  
+    cd Book_Management
 
-Status abfragen ->
- >git status;
+Status abfragen ->  
+    >git status;
 
-Branches abfragen ->
- >git branch;
+Branches abfragen ->  
+    >git branch;
 
-Website Repository clonen ->
- >git clone https://github.com/Bergsocke/Book_Management.git
+Website Repository clonen ->  
+    >git clone https://github.com/Bergsocke/Book_Management.git
 
-Neue Branch "developer_branch" erstellen ->
- >git checkout -b developer_branch;
+Neue Branch "developer_branch" erstellen ->  
+    >git checkout -b developer_branch;
 
-�nderungen kommentieren ->
- >git status;
- >git add .;  (alle Dokumente im Ordner)
- >git add <Dateiname>;
- >git commit -m 'Hier wird Kommentartext eingetragen';
+�nderungen kommentieren ->  
+    >git status;
+    >git add .;  (alle Dokumente im Ordner)
+    >git add <Dateiname>;
+    >git commit -m 'Hier wird Kommentartext eingetragen';
 
-�nderungen im developer_branch mit master mergen ->
- >git checkout master;
- >git merge developer_branch;
+�nderungen im developer_branch mit master mergen ->   
+    >git checkout master;
+    >git merge developer_branch;
 
-�nderungen zum Git Repository Website Developer_Branch pushen ->
- >git checkout developer_branch;
- >git push origin developer_branch;
+�nderungen zum Git Repository Website Developer_Branch pushen ->  
+    >git checkout developer_branch;
+    >git push origin developer_branch;
 
-Auf der Website die �nderungen mit dem Master mergen
+Auf der Website die �nderungen mit dem Master mergen  
 
-�nderungen vom WebsiteMaster in den Master pullen ->
- >git pull origin master;
+�nderungen vom WebsiteMaster in den Master pullen ->  
+    >git pull origin master;
 
-�nderungen dann mit der Developer_branch mergen ->
- >git checkout developer_branch;
- >git merge master;
+�nderungen dann mit der Developer_branch mergen ->  
+    >git checkout developer_branch;
+    >git merge master;
 
