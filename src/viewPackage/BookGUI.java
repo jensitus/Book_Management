@@ -26,7 +26,7 @@ import databasePackage.BookDB;
  * 
  * @author Eva Weinberger
  * 
- * Letztes Änderungsdatum: 15.01.2014
+ * Letztes Änderungsdatum: 16.01.2014
  * 
  */
 
@@ -36,6 +36,8 @@ import databasePackage.BookDB;
  */
 public class BookGUI extends JFrame {
 
+	private static final long serialVersionUID = -4071792935538021823L;
+	
 	// Festlegung der Schriftart für die Bezeichnungsfelder und Schaltflächen
 	static String labelFont = "Verdana";
 	static int labelStyle = Font.BOLD;
@@ -295,8 +297,8 @@ public class BookGUI extends JFrame {
 		// wird dieser Teil in eine eigene Methode geschrieben.
 
 		createBookTable();
-
 	}
+	
 
 	/**
 	 * Aufbau der Büchertabelle (wird im WestPanel ausgegeben)
@@ -319,7 +321,6 @@ public class BookGUI extends JFrame {
 			
 			this.getContentPane().remove(westPanel);
 			bookTable = new JTable(new BookTable(BookDB.displayAll()));
-
 		}
 
 		westPanel = new JPanel();
@@ -335,6 +336,27 @@ public class BookGUI extends JFrame {
 		
 		return bookTable;
 
+	}
+	
+
+	/**
+	 * Wird ein neuer Datensatz in die Datenbank gespeichert, wird die
+	 * Tabelle im WestPanel neu aufgebaut, damit der neue Datensatz
+	 * gleich sichtbar wirdn
+	 */
+	public void reloadWestTable() {
+		
+		this.getContentPane().remove(westPanel);
+		bookTable = new JTable(new BookTable(BookDB.displayAll()));
+		
+		westPanel = new JPanel();
+
+		scrollPane = new JScrollPane(bookTable);
+		westPanel.add(scrollPane);
+
+		this.getContentPane().add(westPanel, BorderLayout.WEST);
+		this.setVisible(true);
+			
 	}
 	
 
